@@ -25,6 +25,7 @@ The core innovations of this project were presented and published at the **IEEE 
 > **Full Paper:** [Read on IEEE Xplore](https://ieeexplore.ieee.org/document/9362400)
 
 ---
+---
 ## 🛠 Technical Architecture
 The system is divided into five distinct electrical sections, coordinated by a central mother controller.
 * Power supply
@@ -57,7 +58,9 @@ The design utilizes a multi-stage regulation strategy to maintain strict voltage
     * This 12V rail is further regulated by the **L7805** (5V for the ESP8266) and the **LD33** (3.3V for the dsPIC33FJ32MC202 microcontroller).
 
 ![Power Supply Hardware](media/sec1_hardware.png)
-      
+
+---
+
 ## 2. BLDC Motor Control System
 
 This section details the implementation of the Brushless DC (BLDC) motor control, focusing on the commutation logic, driver circuitry, and the integration of the dsPIC33FJ32MC202 microcontroller.
@@ -88,7 +91,6 @@ The **dsPIC33FJ32MC202** Digital Signal Controller (DSC) serves as the "brain" f
 2.  **Processing:** Processes the feedback signals against a predefined switching table.
 3.  **Output:** Generates high-frequency PWM signals. By adjusting the duty cycle of these signals, the effective voltage (and thus the current) is regulated, allowing for precise control of motor speed and torque.
 
----
 
 ### 🔬 Experimental Validation
 To verify the hardware design and validate the switching logic, a staged testing approach was implemented:
@@ -103,19 +105,63 @@ To verify the hardware design and validate the switching logic, a staged testing
 ![BLDC Control Experiment](media/sec2_hardware.png)
 
 
+---
 
+## 3. Quasi-Resonant Induction Heating
 
-### 3. Quasi-Resonant Induction Heating
-I focused on the design of a **Quasi-Resonant Inverter** to achieve Zero Voltage Switching (ZVS), which minimizes power loss during high-frequency induction.
+Induction heating offers significant advantages over traditional resistive coils or gas stoves, including rapid heating, superior thermal efficiency, and precise temperature control. This section details the design of the high-frequency resonant inverter used to convert electrical energy into magnetic energy for heating.
 
-* **Simulation:** Validated using **MATLAB/Simulink**.
-* **Waveform Analysis:** The design ensures the IGBT (T1) switches at the optimal point of the resonant cycle to maximize efficiency.
+### Inverter Topology Selection
+For this project, a **Single-Ended (SE) Quasi-Resonant (QR) Inverter** was selected. While Half-Bridge (HB) inverters are common for high-power industrial use, the SE topology was chosen for its:
+* **Cost-Efficiency:** Requires only one switching device (IGBT) and a single resonant capacitor ($C_r$).
+* **Suitability:** Perfectly suited for domestic applications under 2kW, which meets our system's requirements.
+* **Soft-Switching:** Enables Zero Voltage Switching (ZVS), reducing switching losses and improving overall energy conversion efficiency.
 
-![Quasi-Resonant Waveforms](image_6bb3c3.png)
-![Matlab Simulation](image_6bb367.png)
+![Quasi-Resonant Converter](media/sec3_matlab.png)
+
+### Circuit Theory and Mathematical Modeling
+The Single-Ended Parallel Resonant Converter utilizes a tank network formed by the inductor ($L_r$) and capacitor ($C_r$). The peak voltage ratings for the switch and capacitor (typically 1,200V) are calculated based on loading conditions and maximum mains voltage.
+
+#### Key Design Equations:
+The peak current ($I_{PK}$) and resonant voltage ($V_{RES}$) are critical for component selection and system stability.
+
+* **Energy Stored ($E$):** The energy stored in the inductive part of the load during the ON time ($T_{ON}$) is given by:
+$$E = 0.5L \times I_{PK}^2$$
+
+* **Peak Current ($I_{PK}$):** This is proportional to the ON time and the DC bus voltage:
+$$I_{PK} = T_{ON} \times \left( \frac{V_{dc-bus}}{L} \right)$$
+
+* **Resonant Voltage ($V_{RES}$):** Expressed in terms of $T_{ON}$ and $V_{dc-bus}$:
+$$V_{RES} = \frac{T_{ON} \times V_{dc-bus}}{\sqrt{LC}}$$
 
 ---
 
+### Control Strategy
+The power source for this converter is rectified line voltage (unfiltered) to achieve a near-unity power factor. 
+* **Frequency Range:** We employ a switching frequency control scheme operating between **20kHz and 60kHz**. 
+* **Acoustic Noise Mitigation:** By staying above 20kHz, we avoid the human audible range.
+* **Power Scaling:** The system utilizes a "Soft Start" beginning at 60kHz, gradually reaching maximum power at the lower frequency bound of 20kHz.
+
+![Quasi-Resonant Waveforms](media/qr_waveform.png)
+
+---
+## 4. 5-DOF Robotic Arm & System Integration
+
+For the ingredient handling system, I utilized a custom-designed **5-DOF (Degrees of Freedom) robotic arm**. This manipulator was responsible for the precise pick-and-place operation of food ingredients into the induction heating zone.
+![Robotic_Arm](media/sec4_hardware.png)
+
+### Scope and Evolution
+It is important to note the developmental timeline of this system:
+* **2019 - 2020 (M.Tech Thesis):** The primary focus was on the **Power Electronics and Motor Control** (as detailed in Sections 1-3). The robotic arm used in this prototype operated on a structured sequence rather than autonomous environmental sensing.
+* **2022 - 2023 :** My subsequent research shifted toward **Intelligent Robotics**. I have since developed advanced autonomous arms capable of navigating cluttered environments using complex obstacle-avoidance algorithms. These newer systems can replace the basic manipulator in future iterations of the automated kitchen.
+
+### Demonstration
+Below is a demonstration of the robotic system in action, showcasing the integration between the mobile app commands, the power electronics, and the mechanical manipulator:
+
+[![Pancake Making Robot](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+*Watch: 5-DOF Robotic Arm preparing a dish.*
+
+> **Related Research:** > For my more recent work on autonomous navigation and intelligent manipulation in complex environments, please visit my [Intelligent Robotics Portfolio](LINK_TO_YOUR_OTHER_PROJECT).
 ---
 
 ## 🚀 Future Scope
