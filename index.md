@@ -13,6 +13,7 @@ As the demand for convenience grows, this technology serves as a solution for:
 * **Busy Professionals:** Streamlining meal prep for individuals with tight schedules.
 * **Future Automated Restaurants:** Reducing labor costs and ensuring consistent food quality through robotics.
 
+![Cooking Robot Demo](media/cooking_machine_intro.gif)
 ---
 
 ## 📄 Published Research
