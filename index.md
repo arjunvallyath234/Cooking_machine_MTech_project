@@ -82,7 +82,7 @@ Because the **dsPIC33** microcontroller operates at a 3.3V logic level, it canno
 
 ![MOSFET Driver Circuit](media/control_bldc.png)
 
-### 🖥️ Microcontroller Implementation
+### Microcontroller Implementation
 The **dsPIC33FJ32MC202** Digital Signal Controller (DSC) serves as the "brain" for the motor control:
 1.  **Input:** Receives feedback from Hall-effect sensors and the encoder.
 2.  **Processing:** Processes the feedback signals against a predefined switching table.
@@ -91,10 +91,17 @@ The **dsPIC33FJ32MC202** Digital Signal Controller (DSC) serves as the "brain" f
 ---
 
 ### 🔬 Experimental Validation
-To verify the design, the MOSFET driver circuit was tested independently before integration with the motor. The following images demonstrate the experimental setup and the final successful control of the BLDC motor.
+To verify the hardware design and validate the switching logic, a staged testing approach was implemented:
+
+1. **Initial Logic Validation:** During the breadboard prototyping phase, an **Arduino UNO** was used to generate the commutation signals. This allowed for rapid verification of the switching cycle and Hall sensor feedback logic without the complexity of configuring the dsPIC's peripheral registers.
+2. **Driver Testing:** The MOSFET driver circuit (IR2110) was tested independently to ensure the 3.3V-to-12V level shifting was stable and that the gate signals were clean.
+3. **Final Implementation:** Once the switching logic and power stages were validated, the control was migrated to the **dsPIC33FJ32MC202** for the final PCB implementation to take advantage of its high-speed PWM and DSP capabilities.
 
 ![MOSFET Driver Testing](media/ir2110_hardware.jpg)
+
+
 ![BLDC Control Experiment](media/sec2_hardware.png)
+
 
 
 
