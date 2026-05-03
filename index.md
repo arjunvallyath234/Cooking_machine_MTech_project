@@ -92,7 +92,7 @@ The **dsPIC33FJ32MC202** Digital Signal Controller (DSC) serves as the "brain" f
 3.  **Output:** Generates high-frequency PWM signals. By adjusting the duty cycle of these signals, the effective voltage (and thus the current) is regulated, allowing for precise control of motor speed and torque.
 
 
-### 🔬 Experimental Validation
+### Experimental Validation
 To verify the hardware design and validate the switching logic, a staged testing approach was implemented:
 
 1. **Initial Logic Validation:** During the breadboard prototyping phase, an **Arduino UNO** was used to generate the commutation signals. This allowed for rapid verification of the switching cycle and Hall sensor feedback logic without the complexity of configuring the dsPIC's peripheral registers.
@@ -122,21 +122,6 @@ For this project, a **Single-Ended (SE) Quasi-Resonant (QR) Inverter** was selec
 ### Circuit Theory and Mathematical Modeling
 The Single-Ended Parallel Resonant Converter utilizes a tank network formed by the inductor ($L_r$) and capacitor ($C_r$). The peak voltage ratings for the switch and capacitor (typically 1,200V) are calculated based on loading conditions and maximum mains voltage.
 
-#### Key Design Equations:
-The peak current ($I_{PK}$) and resonant voltage ($V_{RES}$) are critical for component selection and system stability.
-
-* **Energy Stored ($E$):** The energy stored in the inductive part of the load during the ON time ($T_{ON}$) is given by:
-$$E = 0.5L \times I_{PK}^2$$
-
-* **Peak Current ($I_{PK}$):** This is proportional to the ON time and the DC bus voltage:
-$$I_{PK} = T_{ON} \times \left( \frac{V_{dc-bus}}{L} \right)$$
-
-* **Resonant Voltage ($V_{RES}$):** Expressed in terms of $T_{ON}$ and $V_{dc-bus}$:
-$$V_{RES} = \frac{T_{ON} \times V_{dc-bus}}{\sqrt{LC}}$$
-
----
-
-### Control Strategy
 The power source for this converter is rectified line voltage (unfiltered) to achieve a near-unity power factor. 
 * **Frequency Range:** We employ a switching frequency control scheme operating between **20kHz and 60kHz**. 
 * **Acoustic Noise Mitigation:** By staying above 20kHz, we avoid the human audible range.
@@ -152,17 +137,17 @@ For the ingredient handling system, I utilized a custom-designed **5-DOF (Degree
 
 ### Scope and Evolution
 It is important to note the developmental timeline of this system:
-* **2019 - 2020 (M.Tech Thesis):** The primary focus was on the **Power Electronics and Motor Control** (as detailed in Sections 1-3). The robotic arm used in this prototype operated on a structured sequence rather than autonomous environmental sensing.
-* **2022 - 2023 :** My subsequent research shifted toward **Intelligent Robotics**. I have since developed advanced autonomous arms capable of navigating cluttered environments using complex obstacle-avoidance algorithms. These newer systems can replace the basic manipulator in future iterations of the automated kitchen.
+1. **2019 - 2020 (M.Tech Thesis):** The primary focus was on the **Power Electronics and Motor Control** (as detailed in Sections 1-3). The robotic arm used in this prototype operated on a structured sequence rather than autonomous environmental sensing.
+2. **2022 - 2023 :** I later enhanced the cooking capability by utilizing a **Hiwonder Open-Source Robotic Arm**. 
+* **Perception:** Integrated a **YOLOv8** object detection model to identify ingredients and cooking tools in real-time.
+* **Compute:** The system runs on Raspberry Pi, which handles the real-time camera feed and executes the YOLOv8 model for object detection; it then runs the custom pancake-making algorithm to generate and transmit precise motor commands to the bus servos.
 
-### Demonstration
-Below is a demonstration of the robotic system in action, showcasing the integration between the mobile app commands, the power electronics, and the mechanical manipulator:
+#### Video Demonstration: AI Pancake Robot
+In this video, I programmed the robot to flip a pancake. It illustrates the trial-and-error process inherent in robotics and the successful application of vision-based control.
+[![Pancake Making Robot](https://img.youtube.com/vi/mvlmW4PokeY/0.jpg)](https://www.youtube.com/shorts/mvlmW4PokeY)
 
-[![Pancake Making Robot](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
-*Watch: 5-DOF Robotic Arm preparing a dish.*
+> **Related Research:** > For my more recent work on autonomous navigation and intelligent manipulation in complex environments, please check my post [Intelligent Robotics Portfolio](https://www.linkedin.com/posts/arjunvallyath_robotics-ros-moveit-ugcPost-7441162898254671872-9Sew?utm_source=share&utm_medium=member_desktop&rcm=ACoAADHo6jcBMT62rYyRx6KptF3gk8TrPv92KWQ)).
 
-> **Related Research:** > For my more recent work on autonomous navigation and intelligent manipulation in complex environments, please visit my [Intelligent Robotics Portfolio](LINK_TO_YOUR_OTHER_PROJECT).
----
 
 ## 🚀 Future Scope
 * **Autonomous Robotics:** Implementing Inverse Kinematics (IK) for the 5-DOF arm.
