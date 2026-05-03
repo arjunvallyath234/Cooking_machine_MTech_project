@@ -144,6 +144,7 @@ It is important to note the developmental timeline of this system:
 
 #### Video Demonstration: AI Pancake Robot
 In this video, I programmed the robot to flip a pancake. It illustrates the trial-and-error process inherent in robotics and the successful application of vision-based control.
+
 [![Pancake Making Robot](https://img.youtube.com/vi/mvlmW4PokeY/0.jpg)](https://www.youtube.com/shorts/mvlmW4PokeY)
 
 > **Related Research:** > For my more recent work on autonomous navigation and intelligent manipulation in complex environments, please check my post [Intelligent Robotics Portfolio](https://www.linkedin.com/posts/arjunvallyath_robotics-ros-moveit-ugcPost-7441162898254671872-9Sew?utm_source=share&utm_medium=member_desktop&rcm=ACoAADHo6jcBMT62rYyRx6KptF3gk8TrPv92KWQ)).
