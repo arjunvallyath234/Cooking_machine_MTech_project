@@ -93,7 +93,7 @@ The **dsPIC33FJ32MC202** Digital Signal Controller (DSC) serves as the "brain" f
 ### 🔬 Experimental Validation
 To verify the design, the MOSFET driver circuit was tested independently before integration with the motor. The following images demonstrate the experimental setup and the final successful control of the BLDC motor.
 
-![MOSFET Driver Testing](media/ir2110_hardware.png)
+![MOSFET Driver Testing](media/ir2110_hardware.jpg)
 ![BLDC Control Experiment](media/sec2_hardware.png)
 
 
