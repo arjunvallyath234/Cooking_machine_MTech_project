@@ -143,11 +143,11 @@ It is important to note the developmental timeline of this system:
 * **Compute:** The system runs on Raspberry Pi, which handles the real-time camera feed and executes the YOLOv8 model for object detection; it then runs the custom pancake-making algorithm to generate and transmit precise motor commands to the bus servos.
 
 #### Video Demonstration: AI Pancake Robot
-In this video, I programmed the robot to flip a pancake. It illustrates the trial-and-error process inherent in robotics and the successful application of vision-based control.
+In this video, I programmed the robot to flip a pancake. It illustrates the trial-and-error process inherent in robotics and the successful application of vision-based control. (Click the image below to play)
 
 [![Pancake Making Robot](https://img.youtube.com/vi/mvlmW4PokeY/0.jpg)](https://www.youtube.com/shorts/mvlmW4PokeY)
 
-> **Related Research:** > For my more recent work on autonomous navigation and intelligent manipulation in complex environments, please check my post [Intelligent Robotics Portfolio](https://www.linkedin.com/posts/arjunvallyath_robotics-ros-moveit-ugcPost-7441162898254671872-9Sew?utm_source=share&utm_medium=member_desktop&rcm=ACoAADHo6jcBMT62rYyRx6KptF3gk8TrPv92KWQ)).
+> **Related Research:** > For my more recent work on autonomous navigation and intelligent manipulation in complex environments, please check my post [Intelligent Robotics Portfolio](https://www.linkedin.com/posts/arjunvallyath_robotics-ros-moveit-ugcPost-7441162898254671872-9Sew?utm_source=share&utm_medium=member_desktop&rcm=ACoAADHo6jcBMT62rYyRx6KptF3gk8TrPv92KWQ)
 
 
 ## 🚀 Future Scope
