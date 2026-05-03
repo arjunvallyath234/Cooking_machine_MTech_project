@@ -43,11 +43,20 @@ This section comprises a step-down transformer, a bridge rectifier, and multiple
 * **ESP8266 NodeMCU:** 5V
 * **dsPIC33FJ32MC202:** 3.3V
 
-![Power Supply Schematic](media/power_supply.png)
 
-Voltage regulators are employed to maintain the supply within the specific tolerances required by the electrical hardware. The design utilizes a suite of regulators, including the LM350, LM338, L7812, L7805, and LD33.The process begins by stepping down the 230V AC mains to 24V AC using a transformer, followed by rectification to DC. This 24V DC rail is then distributed to the LM350 and LM338 regulators.
+**Circuit Operation & Regulation**
+The design utilizes a multi-stage regulation strategy to maintain strict voltage tolerances across all hardware. The regulation suite includes the **LM350**, **LM338**, **L7812**, **L7805**, and **LD33**.
 
+![Power Supply Block Diagram](powersupply_circuit.png)
 
+** The Conversion Process:**
+1.  **Step-Down & Rectification:** The 230V AC mains is stepped down to 24V AC via a transformer and rectified to DC. This 24V DC rail serves as the primary input for the high-current regulators.
+2.  **High-Power Rails:** * The **LM338** provides a 12V, 5A output specifically for the BLDC motor drive and the L7812 stage.
+    * The **LM350** provides a 6V, 3A output dedicated to the six servo motors within the robotic arm.
+3.  **Logic & Control Rails:** * The 12V DC output from the **L7812** powers the **IR2110** gate driver.
+    * This 12V rail is further regulated by the **L7805** (5V for the ESP8266) and the **LD33** (3.3V for the dsPIC33FJ32MC202 microcontroller).
+![Power Supply Hardware](powersupply_hardware.png)
+      
 ### 2. BLDC Motor & PID Control
 A critical part of the cooking process is regulating the speed of the BLDC motor based on real-time temperature. 
 * **Controller:** dsPIC33FJ32MC202 (Digital Signal Controller).
