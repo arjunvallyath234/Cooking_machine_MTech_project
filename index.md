@@ -43,7 +43,7 @@ This section comprises a step-down transformer, a bridge rectifier, and multiple
 * **ESP8266 NodeMCU:** 5V
 * **dsPIC33FJ32MC202:** 3.3V
 
-![Power Supply Schematic](media/power_supply.png)
+![Power Supply Schematic](media/power supply.png)
 
 Voltage regulators are employed to maintain the supply within the specific tolerances required by the electrical hardware. The design utilizes a suite of regulators, including the LM350, LM338, L7812, L7805, and LD33.The process begins by stepping down the 230V AC mains to 24V AC using a transformer, followed by rectification to DC. This 24V DC rail is then distributed to the LM350 and LM338 regulators.
 
