@@ -47,7 +47,7 @@ This section comprises a step-down transformer, a bridge rectifier, and multiple
 **Circuit Operation & Regulation**
 The design utilizes a multi-stage regulation strategy to maintain strict voltage tolerances across all hardware. The regulation suite includes the **LM350**, **LM338**, **L7812**, **L7805**, and **LD33**.
 
-![Power Supply Block Diagram](powersupply_circuit.png)
+![Power Supply Block Diagram](media/powersupply_circuit.png)
 
 ** The Conversion Process:**
 1.  **Step-Down & Rectification:** The 230V AC mains is stepped down to 24V AC via a transformer and rectified to DC. This 24V DC rail serves as the primary input for the high-current regulators.
@@ -55,7 +55,7 @@ The design utilizes a multi-stage regulation strategy to maintain strict voltage
     * The **LM350** provides a 6V, 3A output dedicated to the six servo motors within the robotic arm.
 3.  **Logic & Control Rails:** * The 12V DC output from the **L7812** powers the **IR2110** gate driver.
     * This 12V rail is further regulated by the **L7805** (5V for the ESP8266) and the **LD33** (3.3V for the dsPIC33FJ32MC202 microcontroller).
-![Power Supply Hardware](powersupply_hardware.png)
+![Power Supply Hardware](media/sec1_hardware.png)
       
 ### 2. BLDC Motor & PID Control
 A critical part of the cooking process is regulating the speed of the BLDC motor based on real-time temperature. 
