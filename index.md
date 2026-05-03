@@ -147,7 +147,42 @@ In this video, I programmed the robot to flip a pancake. It illustrates the tria
 
 [![Pancake Making Robot](https://img.youtube.com/vi/mvlmW4PokeY/0.jpg)](https://www.youtube.com/shorts/mvlmW4PokeY)
 
-> **Related Research:** > For my more recent work on autonomous navigation and intelligent manipulation in complex environments, please check my post [Intelligent Robotics Portfolio](https://www.linkedin.com/posts/arjunvallyath_robotics-ros-moveit-ugcPost-7441162898254671872-9Sew?utm_source=share&utm_medium=member_desktop&rcm=ACoAADHo6jcBMT62rYyRx6KptF3gk8TrPv92KWQ)
+> **Related Research:** > For my more recent work on autonomous navigation and intelligent manipulation in complex environments, please check my post [Intelligent Robotics: 5DOF robotic arm](https://www.linkedin.com/posts/arjunvallyath_robotics-ros-moveit-ugcPost-7441162898254671872-9Sew?utm_source=share&utm_medium=member_desktop&rcm=ACoAADHo6jcBMT62rYyRx6KptF3gk8TrPv92KWQ)
+
+## 5. IoT Integration and Mobile Application
+
+To enable remote operation and user interaction, I developed a custom mobile application using the **Blynk IoT platform**. This serves as the primary digital interface connecting the user to the automated cooking machine.
+
+### System Workflow
+The "App-to-Plate" process operates through a seamless wireless sequence:
+
+1. **Menu Selection:** The user browses the available dishes and makes a selection using the Blynk mobile app.
+2. **Remote Ordering:** Upon pressing the "Order" button, a command signal is transmitted via the cloud.
+3. **Hardware Reception:** The **ESP8266 NodeMCU** module, which is integrated directly into the cooking machine's circuitry, receives this incoming order over Wi-Fi.
+4. **Automated Preparation:** Once the command is parsed, the ESP8266 triggers the mother controller. This initiates the coordinated sequence of the robotic arm, BLDC motor, and induction heating system to prepare the food autonomously.
+
+![Blynk Mobile Application Interface](media/acm_app.png)
+
+## Custom PCB Design & Final Prototype
+
+To transition the project from a breadboard proof-of-concept to a robust, industrial-grade system, I designed a custom multi-layer Printed Circuit Board (PCB) using **Diptrace**.
+
+### Hardware Consolidation
+The custom PCB serves as the central hardware hub for the cooking machine, successfully integrating the distinct high-power and low-power modules onto a single board. It houses:
+* The **Quasi-Resonant Converter** for the induction heating coil.
+* The **3-Phase Inverter** and **IR2110 Driver Circuits** for the BLDC motor.
+* The **Multi-Rail Power Supply** network (325V, 24V, 12V, 5V, 3.3V).
+
+![Custom PCB Design in Diptrace](media/PCB_design.gif)
+
+
+### The Final Assembled Prototype
+The completed physical prototype brings all the mechatronic, power, and IoT systems into a single cohesive unit. Upon receiving the Blynk command, the mother controller successfully orchestrates the power delivery, induction heating, and 5-DOF robotic manipulation to autonomously cook the selected dish.
+
+![Final Automated Cooking Machine Prototype](media/Prototype.jpg)
+
+---
+
 
 
 ## 🚀 Future Scope
