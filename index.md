@@ -183,9 +183,39 @@ The completed physical prototype brings all the mechatronic, power, and IoT syst
 
 ---
 
+### Future Scope and Advanced Upgrades
 
+While the current prototype successfully demonstrates the electrical and mechatronic foundation of an automated kitchen, the long-term vision for this project involves integrating advanced AI and mechanical prep systems. Future iterations will focus on the following areas:
 
-## 🚀 Future Scope
-* **Autonomous Robotics:** Implementing Inverse Kinematics (IK) for the 5-DOF arm.
-* **AI & HRI:** Integrating voice recognition and adaptive recipe learning.
-* **Thermal Vision:** Using IR sensors for smarter ingredient detection.
+### 🧠 Artificial Intelligence & Autonomy
+* **Dynamic Recipe Generation:** Allowing users to input or upload custom recipes. The AI will parse the text, understand the culinary steps, and automatically generate the necessary motor control and heating sequences to cook the dish from scratch.
+* **Precision Cooking:** Utilizing AI and thermal vision to monitor food doneness in real-time, dynamically adjusting the Quasi-Resonant inverter's heat output for perfect results.
+
+### 🗣️ Human-Robot Interaction (HRI) & Safety
+* **Voice-Activated HRI:** Integrating Natural Language Processing (NLP) so users can speak directly to the machine, ask for cooking updates, or modify orders hands-free.
+* **Collaborative Operation (Cobot Safety):** Upgrading the manipulator with advanced torque sensing and proximity sensors so it can safely operate and cook alongside a human in a shared kitchen environment without the risk of injury.
+
+### Automated Preparation Modules
+* **Automated Chopping System:** Developing a dedicated mechanical module to prep raw vegetables and proteins before they are introduced to the cooking zone.
+* **Smart Spice Dispenser/Mixer:** An automated, multi-chamber dispensing system capable of precisely measuring and mixing spices on the fly based on the AI's recipe calculations.
+
+### The Development Journey and Final Demonstration
+
+To see the complete "App-to-Plate" process in action, including the automated cooking, serving, and self-cleaning mechanisms, I have documented the entire journey in the video below. 
+This video also covers the unique challenges of fabricating this hardware prototype during the March 2020 pandemic lockdown, utilizing the materials and controllers I had available at home.
+
+[![Fully Automated Electric Food Cooking Robot](https://i.ytimg.com/vi/lh7H-EUtaVQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=lh7H-EUtaVQ)
+*Watch: The complete journey and final demonstration of the M.Tech Automated Cooking Robot.*
+
+---
+
+## 🛠️ Technical Skills Summary
+| Category | Tools & Technologies |
+| :--- | :--- |
+| **Electronics** | NI-Multisim, Diptrace (PCB Design), Quasi-Resonant Converters, ZVS |
+| **Control Systems** | PID Control, dsPIC33FJ, BLDC Motor commutation |
+| **Embedded Systems** | dsPIC33FJ (DSC), Arduino UNO, ESP8266 (IoT) |
+| **Software** | Python, C++, MATLAB/Simulink, Blynk IoT |
+
+---
+*Developed by Arjun Vallyath Anil*
