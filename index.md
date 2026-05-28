@@ -209,6 +209,20 @@ This video also covers the unique challenges of fabricating this hardware protot
 
 ---
 
+## Updates: as of 05/26/2026
+Meet "Max"—a 100% local, offline, voice-activated AI kitchen assistant running entirely on my Raspberry Pi. 
+
+Getting a large language model to hold a real-time, natural conversation on edge hardware was a struggle. Since this is running on a Raspberry Pi, there is still some initial processing delay to get a response, which is not shown in this video. The motivation for developing this is simple: most LLMs are in the cloud. If the internet goes down, your AI assistant is gone. That's why I wanted to build a resilient, local AI agent made for a specific task. Max is an AI agent focused entirely on the kitchen activities. 
+
+### Under the Hood:
+* **Wake Word & STT:** Vosk (Medium English Model) reading directly from a RAM disk to prevent SD card wear.
+* **LLM Engine:** Qwen 2.5 running locally via Ollama.
+* **TTS:** Piper (Ryan Voice) scaled to 48000Hz via SoX for hardware compatibility.
+
+This is just step one. Next up: integrating physical tool use and robotic arms. Check out the video below to see Max in action!
+[![AI_assistant](https://i.ytimg.com/vi/MYz8gMd_9Cg/maxresdefault.jpg)](https://youtube.com/shorts/MYz8gMd_9Cg?si=flk_71GCrQZoVjYv)
+*Watch: See "Max"—a 100% local, offline, voice-activated AI kitchen assistant in action.*
+
 ## 🛠️ Technical Skills Summary
 | Category | Tools & Technologies |
 | :--- | :--- |
